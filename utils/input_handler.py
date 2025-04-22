@@ -9,13 +9,19 @@ def leer_alfabeto():
     return simbolos
 
 def leer_expresion_regular(alfabeto):
-    entrada = input("Introduce la expresión regular (usa . CONCATENACION , | UNION , * CERRADURA , paréntesis): ")
+    entrada = input("Introduce la expresión regular (usa ., |, *, paréntesis): ")
+    entrada = entrada.replace(" ", "")  # Elimina espacios si los hay
+    
     operadores = set(['.', '|', '*', '(', ')'])
     simbolos_validos = set(alfabeto).union(operadores)
-    # Verificar que los símbolos de la expresión regular sean válidos
+
     for c in entrada:
         if c not in simbolos_validos:
-            print(f"Símbolo inválido: '{c}'")
+            print(f"Símbolo inválido: '{c}' (usa solo '*' ASCII, no ∗ matemático)")
             return leer_expresion_regular(alfabeto)
     
     return entrada
+
+
+
+print(leer_expresion_regular(leer_alfabeto()))
