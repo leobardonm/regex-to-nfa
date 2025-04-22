@@ -68,18 +68,3 @@ def construir_nfa(postfix_expr, alfabeto):
         raise ValueError("Expresión postfija inválida")
 
     return stack[0]
-
-
-def imprimir_nfa_legible(nfa):
-    state_names = {state: f"S{i}" for i, state in enumerate(nfa.states)}
-
-    print("Transiciones del NFA:")
-    for state in nfa.states:
-        nombre_origen = state_names[state]
-        for simbolo, destinos in state.transitions.items():
-            for destino in destinos:
-                nombre_destino = state_names[destino]
-                print(f"{nombre_origen} --{simbolo}--> {nombre_destino}")
-
-    print(f"\nEstado inicial: {state_names[nfa.start_state]}")
-    print(f"Estado de aceptación: {state_names[nfa.accept_state]}")
