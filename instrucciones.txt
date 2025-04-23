@@ -1,0 +1,45 @@
+Implementaci ́on de m ́etodos computacionales TC2037Actividad integradora 1: Lenguajes regulares y su procesamiento
+Instrucciones generales: Lea cuidadosamente la descripci ́on paso a paso de la actividad integradora.
+Esta actividad se debe realizar mediante los equipos del reto definidos previamente. Una vez completada su
+actividad, suba a Canvas , por equipo, un archivo ZIP con el c ́odigo fuente de su programa y un archivo
+PDF con el reporte global de la actividad.
+Objetivo general: Dise ̃nar una aplicaci ́on en Python que dada una expresi ́on regular (R) genere el
+aut ́omata finito determinista (AFD) correspondiente que reconoce el lenguaje asociado, mostrando gr ́afica-
+mente el AFD en una aplicaci ́on para su correspondiente uso y verificaci ́on de funcionamiento.
+Instrucciones particulares: A continuaci ́on se detallan las instrucciones espec ́ıficas de esta actividad,
+comenzando con las entradas y salidas de la aplicaci ́on. Posteriormente, se detallan los pasos necesarios para
+convertir las entradas en las salidas.
+Entradas:
+1. Alfabeto (Σ): s ́ımbolos del alfaberto separados por comas en texto plano. Por ejemplo, los al-
+fabetos Σ1 = {0, 1}, Σ2 = {a, b, c}, y Σ3 = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f } debe ser dados
+como: “0,1”, “a,b,c”, y “0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f”. La cadena deber ́a ser proporcionada a su
+programa por el usuario a trav ́es de un caja de texto en una interfaz gr ́afica de usuario (por
+ejemplo, una p ́agina HTML o por l ́ınea de comandos en la terminal).
+2. Expresi ́on regular (R): definir una expresi ́on regular para el lenguaje que desea reconocer. Solo
+podr ́a hacer uso de las operaciones: (i) estrella de Kleene (∗); (iii) uni ́on (|); (iii) concatenaci ́on (.);
+(iv) par ́entesis para agrupaci ́on de subexpresiones. As ́ı entonces, algunos ejemeplos de expresiones
+regulares sobre Σ = {0, 1} son: (a) R1 = 0.1.0.1∗, R2 = ((0.1∗)|(1.1.1))∗.
+Salidas: El AFD correspondiente a la expresi ́on regular, mostrado en una interfaz gr ́afica de usuario
+(UI, por sus siglas en ingl ́es). Este AFD podr ́a luego ser alimentado con palabras para determinar si
+son reconocidas o no, es decir, si son parte o no del lenguaje representado por la expresi ́on regular.
+1. Construcci ́on del aut ́omata finito no determinista. Tome las entradas del usuario Σ y R. Luego,
+transforme R en un aut ́omata finito no determinista (AFN) mediante las t ́ecnicas de construcci ́on
+vistas en clase. Tambi ́en puede revisar el algoritmo de McNaughton-Yamada-Thompson para una
+mayor referencia. Puede representar la expresi ́on mediante un  ́arbol sint ́actico para su procesamiento.
+2. Construcci ́on del aut ́omata finito determinista. Tome el AFN de la fase anterior como entrada
+en esta fase. Deber ́a transformar el AFN en un AFD mediante el algoritmo de conversi ́on visto en clase
+(algoritmo de subconjuntos).
+3. Presentaci ́on visual. Tome el AFD de la fase anterior y repres ́entelo gr ́aficamente, es decir, dibuje
+en una UI el diagrama de transici ́on (use m ́odulos de Python).
+4. Pruebas. La UI de la fase anterior deber ́a contener una caja de texto donde se pueda introducir una
+palabra (w = w1w2 ···wn, donde cada wi ∈ Σ) para que el AFD la procese. Adem ́as, agregue un
+bot ́on para lanzar el procesamiento de la palabra. Ilustre visualmente c ́omo el AFD cambia de estado
+al procesar individualmente cada s ́ımbolo wi ∈ w. Al terminar de procesar la palabra, muestre un
+mensaje anunciando si w es reconocida o no por el AFD.
+Restricciones: Los algoritmos de conversi ́on de expresi ́on regular a AFN y de AFN a AFD deber ́an ser
+programados por usted en su totalidad. Pueden usar libremente m ́odulos de Python que apoyen el desarrollo
+pero no dependa totalmente de ellos. Use sus conocimientos para construir la UI. Si no tiene experiencia
+haciendo UIs, use la terminal como medio para alimentar el programa, pero s ́ı debe mostrar el AFD en una
+figura.
+Evaluaci ́on: La evaluaci ́on ser ́a de manera presencial con el profesor disruptivo mediante una muestra
+del funcionamiento del programa.

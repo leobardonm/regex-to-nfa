@@ -5,7 +5,7 @@ from nfa_builder import construir_nfa
 from dfa_converter import construir_dfa
 from simular_dfa import simular_dfa
 from utils.graph_drawer import draw_dfa
-
+from gui.simulador_dfa_gui import mostrar_interfaz_dfa
 
 def imprimir_nfa_legible(nfa):
     state_names = {state: f"S{i}" for i, state in enumerate(nfa.states)}
@@ -52,4 +52,6 @@ if __name__ == "__main__":
 
     palabra = input("\nIntroduce una palabra para simular: ")
     simular_dfa(dfa, palabra)
-    
+    draw_dfa(dfa, "afd")
+    mostrar_interfaz_dfa(dfa)
+

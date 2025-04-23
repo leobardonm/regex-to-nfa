@@ -1,20 +1,20 @@
-def simular_dfa(dfa, palabra):
+def simular_dfa(dfa, palabra, gui=False):
     estado_actual = dfa["inicio"]
+    recorrido = [estado_actual]
 
-    print("\nRecorrido del AFD:")
     for simbolo in palabra:
-        print(f"{estado_actual} --{simbolo}--> ", end="")
+        transiciones = dfa["transiciones"].get(estado_actual, {})
+        if simbolo not in transiciones:
+            recorrido.append(f"(sin '{simbolo}')")
+            msg = f"❌ Palabra rechazada\nRecorrido: {' → '.join(recorrido)}"
+            return msg if gui else print(msg)
 
-        if simbolo not in dfa["transiciones"][estado_actual]:
-            print("❌ Transición no definida.")
-            return False
-
-        estado_actual = dfa["transiciones"][estado_actual][simbolo]
-        print(estado_actual)
+        estado_actual = transiciones[simbolo]
+        recorrido.append(estado_actual)
 
     if estado_actual in dfa["finales"]:
-        print(f"\n✅ Palabra aceptada. Estado final: {estado_actual}")
-        return True
+        msg = f"✅ Palabra aceptada\nRecorrido: {' → '.join(recorrido)}"
     else:
-        print(f"\n❌ Palabra no aceptada. Estado final: {estado_actual}")
-        return False
+        msg = f"❌ Palabra no aceptada\nRecorrido: {' → '.join(recorrido)}"
+
+    return msg if gui else print(msg)

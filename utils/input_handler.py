@@ -23,5 +23,3 @@ def leer_expresion_regular(alfabeto):
     return entrada
 
 
-
-print(leer_expresion_regular(leer_alfabeto()))
