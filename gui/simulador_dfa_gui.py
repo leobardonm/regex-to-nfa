@@ -5,7 +5,7 @@ from utils.postfix import convertir_a_postfija
 from nfa_builder import construir_nfa
 from dfa_converter import construir_dfa
 from simular_dfa import simular_dfa
-from visualizer.graph_drawer import draw_dfa
+from utils.graph_drawer import draw_dfa
 
 
 class AFDApp:
