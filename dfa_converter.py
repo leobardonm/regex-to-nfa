@@ -44,7 +44,7 @@ def construir_dfa(nfa, alfabeto):
             cierre_frozen = frozenset(cierre)
 
             if not cierre:
-                transiciones_dfa[nombre_actual][simbolo] = "Dead"  # Ir a estado trampa
+                transiciones_dfa[nombre_actual][simbolo] = "trampa"  # Ir a estado trampa
                 continue
 
             if cierre_frozen not in estado_dfa:
@@ -55,10 +55,10 @@ def construir_dfa(nfa, alfabeto):
 
             transiciones_dfa[nombre_actual][simbolo] = estado_dfa[cierre_frozen]
 
-    # Estado trampa Dead
-    transiciones_dfa["Dead"] = {}
+    # Estado trampa 
+    transiciones_dfa["trampa"] = {}
     for simbolo in alfabeto:
-        transiciones_dfa["Dead"][simbolo] = "Dead"  # Loop sobre sí mismo
+        transiciones_dfa["trampa"][simbolo] = "trampa"  # Loop sobre sí mismo
 
     # Identificar estados finales del DFA
     finales_dfa = []
