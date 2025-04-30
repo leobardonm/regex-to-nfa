@@ -121,6 +121,7 @@ La interfaz gráfica (`gui/simulador_dfa_gui.py`) proporciona:
 
 ## Autores
 José Leobardo Navarro Márquez 
+
 Regina Martínez Vázquez
 
 ## Licencia
