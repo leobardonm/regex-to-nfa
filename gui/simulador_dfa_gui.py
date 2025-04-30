@@ -60,6 +60,12 @@ class AFDApp:
         # Botón para simular
         tk.Button(left_frame, text="Simular palabra", command=self.simular).pack(pady=10)
 
+        # Resultado de la simulación sin animación
+        tk.Label(left_frame, text="Simulación rápida:", bg='#2E2E2E', fg='white').pack()
+        self.resultado_rapido = tk.Label(left_frame, text="", font=("Arial", 10),
+                                       wraplength=280, justify="left", bg='#2E2E2E', fg='white')
+        self.resultado_rapido.pack(pady=5)
+
         # Resultado
         self.resultado_label = tk.Label(left_frame, text="", font=("Arial", 12), 
                                       wraplength=300, justify="center", bg='#2E2E2E', fg='white')
@@ -232,10 +238,14 @@ class AFDApp:
             messagebox.showerror("Error", "Primero debes generar el AFD.")
             return
 
+        # Mostrar resultado de simulación rápida
+        resultado_rapido = simular_dfa(self.dfa, palabra, gui=True)
+        self.resultado_rapido.config(text=resultado_rapido)
+            
         # Realizar la animación
         resultado = self.animar_recorrido(palabra)
         
-        # Mostrar el resultado
+        # Mostrar el resultado de la animación
         if resultado:
             self.resultado_label.config(text="✅ Palabra aceptada")
         else:

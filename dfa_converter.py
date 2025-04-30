@@ -26,6 +26,7 @@ def construir_dfa(nfa, alfabeto):
     estado_dfa = {}  # Mapea conjuntos de estados NFA -> nombre de estado DFA (D0, D1, etc.)
     transiciones_dfa = {}  # Transiciones del DFA
     estados_dfa = []  # Conjuntos de estados
+    necesita_trampa = False  # Flag para indicar si se necesita estado trampa
 
     inicial = frozenset(epsilon_closure({nfa.start_state}))
     estado_dfa[inicial] = "D0"
@@ -44,7 +45,8 @@ def construir_dfa(nfa, alfabeto):
             cierre_frozen = frozenset(cierre)
 
             if not cierre:
-                transiciones_dfa[nombre_actual][simbolo] = "trampa"  # Ir a estado trampa
+                necesita_trampa = True
+                transiciones_dfa[nombre_actual][simbolo] = "trampa"
                 continue
 
             if cierre_frozen not in estado_dfa:
@@ -55,10 +57,11 @@ def construir_dfa(nfa, alfabeto):
 
             transiciones_dfa[nombre_actual][simbolo] = estado_dfa[cierre_frozen]
 
-    # Estado trampa 
-    transiciones_dfa["trampa"] = {}
-    for simbolo in alfabeto:
-        transiciones_dfa["trampa"][simbolo] = "trampa"  # Loop sobre sí mismo
+    # Solo crear estado trampa si es necesario
+    if necesita_trampa:
+        transiciones_dfa["trampa"] = {}
+        for simbolo in alfabeto:
+            transiciones_dfa["trampa"][simbolo] = "trampa"
 
     # Identificar estados finales del DFA
     finales_dfa = []
